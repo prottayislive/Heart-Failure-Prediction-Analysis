@@ -20,12 +20,26 @@ The dataset includes clinical records of patients, featuring key indicators such
 
 ### Model Building and Evaluation
 Several machine learning models were implemented and evaluated:
-- **Logistic Regression**: Served as a baseline for performance comparison.
 - **Decision Trees and Random Forest**: Provided insights into feature importance and allowed for a non-linear approach to classification.
-- **Support Vector Machines (SVM)**: Explored the dataset's separability in a high-dimensional space.
-- **Neural Networks**: Leveraged to capture complex patterns through deep learning techniques.
 
-Each model's performance was evaluated based on accuracy, precision, recall, and F1-score. Confusion matrices and ROC curves were also generated to provide a comprehensive view of model effectiveness.
+### Decision Tree Analysis
+The Decision Tree model was evaluated at various depths to understand its performance concerning overfitting and generalization capabilities. Here's a summary of its performance metrics:
+
+- At a depth of 1, the model achieves a balance between training and test accuracy (85.65% and 82.22%, respectively), with a cross-validation (CV) accuracy of 84.70%, suggesting a simplistic model that generalizes well but might be underfitting.
+- Increasing the depth to 3 improves the training accuracy to 89.00% but slightly decreases test accuracy to 78.89%, with CV accuracy dropping to 78.97%, indicating the onset of overfitting.
+- At a depth of 8, the training accuracy reaches 100%, indicating perfect fitting on the training data. However, test accuracy plateaus at 77.78%, and CV accuracy drops to 74.63%, clearly showing overfitting where the model fails to generalize well to unseen data.
+
+### Random Forest Analysis
+The Random Forest model, known for its ensemble learning capability to reduce overfitting, was also evaluated across various depths:
+
+- At lower depths (1-2), the model demonstrates decent generalizability, with test accuracies of 72.22% and 80.00%, respectively. The CV accuracy at depth 2 is 81.36%, indicating a robust model against overfitting at this stage.
+- Increasing the depth to 4 and 5 sees improvements in both training and test accuracies, peaking at 94.26% and 85.56% for training and test datasets, respectively, with a CV accuracy of 85.18% at depth 4.
+- Beyond depth 5, while training accuracy continues to improve, reaching 100% at depth 7, test accuracy and CV accuracy do not significantly increase, suggesting that the model gains from additional depth diminish.
+
+### Key Insights
+- **Decision Tree vs. Random Forest**: The Random Forest model outperforms the Decision Tree in test accuracy and shows better resistance to overfitting, thanks to its ensemble approach.
+- **Optimal Complexity**: Both models exhibit optimal performance at a medium complexity level (depth 3-5 for Decision Trees and depth 4-5 for Random Forest). Beyond these points, improvements in training accuracy come at the cost of generalization.
+- **Generalization Capability**: The Random Forest model demonstrates a superior ability to generalize across different depths, with its ensemble method effectively managing the bias-variance trade-off.
 
 ## Key Findings and Visualizations
 - **Risk Factors**: Visualizations from EDA highlighted significant risk factors for heart failure, such as elevated blood pressure and cholesterol levels.
